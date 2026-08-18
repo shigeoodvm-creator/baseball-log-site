@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Baseball LOG — 野球の記録を、思い出に変える</title>
-<meta name="description" content="少年野球の試合を、タップするだけで記録できる iPhone / iPad アプリ。ルールを知らない保護者でも書けて、そのまま早稲田式スコアブックになります。選手の名前と写真は端末の中だけ。" />
+<title>野球スコアブックアプリ Baseball LOG｜タップで記録・少年野球の保護者向け</title>
+<meta name="description" content="野球のスコアブックが、タップするだけでつけられる iPhone / iPad アプリ。ルールを知らない保護者でも書けて、そのまま早稲田式スコアブックになります。少年野球・草野球の記録に。選手の名前と写真は端末の中だけ。" />
 <link rel="icon" href="images/icon.png" />
 <link rel="apple-touch-icon" href="images/icon.png" />
 <link rel="canonical" href="https://baseball-log.com/" />
@@ -18,6 +18,87 @@
 <meta property="og:image" content="https://baseball-log.com/images/home.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@BaseballLOG_jp" />
+
+<!--
+  構造化データ（JSON-LD）。ページの見た目には出ないが、Google に
+  「これは iOS 向けの野球アプリ」「これはよくある質問」だと機械可読で伝える。
+  検索結果に FAQ が展開表示されやすくなる。FAQ を本文で足したら下も揃える。
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Baseball LOG",
+  "alternateName": "野球スコアブックアプリ Baseball LOG",
+  "operatingSystem": "iOS",
+  "applicationCategory": "SportsApplication",
+  "url": "https://baseball-log.com/",
+  "downloadUrl": "https://apps.apple.com/app/baseball-log/id6795148572",
+  "image": "https://baseball-log.com/images/icon.png",
+  "description": "野球のスコアブックが、タップするだけでつけられる iPhone / iPad アプリ。ルールを知らない保護者でも書けて、そのまま早稲田式スコアブックになります。少年野球・草野球の記録に。",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "野球のルールを知らなくても使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。そのために作ったアプリです。打球が飛んだ場所を押すと、その場所で起こりうる結果だけが出てきます。アウトの数や走者の動き、得点や打点はアプリが計算します。「犠打として認められるか」といった細かい判断も、条件を満たしたときだけ選択肢に出るようにしています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "電波が届かない球場でも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。記録は端末の中で完結するので、圏外でも問題ありません。地図での球場登録と天気の取得だけは通信が必要なので、その場合はアプリがあらかじめお知らせします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "写真はどこに保存されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "お使いの端末の中だけです。サーバーには送りません。機種変更のときは、アプリのバックアップ機能で記録と写真をまとめて書き出し、新しい端末で復元してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "チームのみんなで使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。招待コードを配ると、同じチームに参加できます。共有されるのは点数・試合の経過・背番号までで、選手の名前や写真は共有されません。メンバーは全員同じ権限なので、卒団で誰が抜けても引き継ぎの作業が要りません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Android 版はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "現在は iPhone / iPad のみです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "草野球や中学・高校のチームでも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。少年野球の保護者を中心に考えて作っていますが、記録の仕組みは公認野球規則にそっているので、草野球・社会人・部活動でもそのまま使えます。"
+      }
+    }
+  ]
+}
+</script>
 
 <style>
   :root {
@@ -313,11 +394,12 @@
 <header class="hero">
   <div class="wrap">
     <div>
-      <span class="badge">iPhone / iPad アプリ</span>
+      <span class="badge">野球スコアブックアプリ｜iPhone / iPad</span>
       <h1>野球の記録を、<br /><span class="hl">思い出に変える。</span></h1>
       <p class="lead">
+        打球が飛んだ場所をタップするだけで、そのまま早稲田式スコアブックになる野球記録アプリ。<br />
         試合の日も、球場も、スコアも、その日の天気も。<br />
-        バラバラだった1年ぶんを、ひとつにまとめて残しておくアプリです。
+        バラバラだった1年ぶんを、ひとつにまとめて残しておけます。
       </p>
       <div class="cta-row">
         <a class="btn btn-main" href="https://apps.apple.com/app/baseball-log/id6795148572">App Store で入手</a>
@@ -517,6 +599,36 @@
     <p style="text-align:center; color:var(--muted); font-size:0.82rem; margin:2.5rem 0 0;">
       ※ 画面はすべて記入例です。
     </p>
+  </div>
+</section>
+
+<!-- ============ ④ 選手カード ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">4 ／ ひとりひとりが主役</p>
+    <h2><span class="mark">トレカみたいに、その子だけの1枚</span></h2>
+    <p class="sub">記録をつけていくと、子どもひとりひとりに「選手カード」ができあがります。実際に撮った写真で、その子だけの1枚に。</p>
+
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <h3>撮った写真が、そのままカードに</h3>
+        <p>
+          チーム名・背番号・守備位置と、あなたが撮った<strong>実際の写真</strong>でカードになります。
+          外部の AI に送って加工することはありません。ホーム色・アウェイ色の2通りで表示できます。
+        </p>
+        <ul>
+          <li>成績にあわせて、ひとことのキャッチが自動で付きます</li>
+          <li>打率・安打・本塁打・打点・得点・OPS が並びます</li>
+          <li>スワイプで、チームのみんなのカードをめくれます</li>
+        </ul>
+        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
+          <span class="save">Premium</span> カードに公式戦成績を反映するのは Premium です。カードの表示そのものは無料で使えます。
+        </p>
+      </div>
+      <div class="fshot">
+        <div class="phone lg"><div class="screen" data-label="images/card.png を置く"><img src="images/card.png" alt="実際に撮った写真でつくった、背番号5番の選手カード" /></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
