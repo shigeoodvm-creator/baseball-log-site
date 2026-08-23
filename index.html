@@ -82,6 +82,14 @@
     },
     {
       "@type": "Question",
+      "name": "友だちとカードを交換できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。選手カードを AirDrop で近くの相手の iPhone に直接渡せます。渡すのは端末どうしで、サーバーには送りません。カードに入るのは写真・下の名前・背番号だけで、成績は含まれません。もらったカードはアプリの「コレクション」に貯まります。交換には、相手も Baseball LOG アプリが必要です。"
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Android 版はありますか？",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -227,6 +235,27 @@
     box-shadow: 0 18px 44px rgba(0,0,0,0.16);
   }
   .shot-plain img { width: 100%; height: auto; }
+
+  /* コレクション（バインダー風）。1枚は実写カード、残りは「これから集める」裏面 */
+  .binder {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem;
+    width: min(320px, 100%);
+    padding: 0.9rem; border-radius: 18px;
+    background: var(--navy-soft);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+  }
+  .binder .bcard {
+    aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden;
+    background: #223047; border: 1px solid rgba(255,255,255,0.08);
+  }
+  .binder .bcard img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .binder .bcard.back {
+    display: flex; align-items: center; justify-content: center;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 6px, transparent 6px 12px),
+      linear-gradient(160deg, var(--crimson-deep), var(--navy));
+  }
+  .binder .bcard.back span { color: rgba(255,255,255,0.55); font-size: 1.5rem; font-weight: 800; }
 
   .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 0 0 1rem; font-size: 0.88rem; }
   .legend span { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
@@ -632,6 +661,43 @@
   </div>
 </section>
 
+<!-- ============ ⑤ 集めて、交換する ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">5 ／ 集めて、交換する</p>
+    <h2><span class="mark">そのカード、友だちと交換できる</span></h2>
+    <p class="sub">自分の子のカードを、友だちのお父さん・お母さんに渡せます。もらったカードは「コレクション」に貯まっていく。トレカを交換した、あの感覚です。</p>
+
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <h3>AirDrop で、手渡しみたいに</h3>
+        <p>
+          チームのみんなのカードを、近くにいる相手の iPhone へ <strong>AirDrop で直接</strong>渡せます。
+          もらったカードは <strong>「コレクション」</strong> にまとまって、めくって眺められます。
+        </p>
+        <ul>
+          <li>渡すのは端末どうしで直接。<strong>サーバーには送りません</strong></li>
+          <li>カードに入るのは<strong>写真・下の名前・背番号だけ</strong>。成績は入りません</li>
+          <li>もらったカードは「コレクション」に貯まっていきます</li>
+        </ul>
+        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
+          交換には、相手も Baseball LOG アプリが必要です。
+        </p>
+      </div>
+      <div class="fshot">
+        <div class="binder" aria-label="集めたカードが並ぶコレクションのイメージ">
+          <div class="bcard"><img src="images/card.png" alt="コレクションに入った選手カード" /></div>
+          <div class="bcard back"><span>？</span></div>
+          <div class="bcard back"><span>？</span></div>
+          <div class="bcard back"><span>？</span></div>
+          <div class="bcard back"><span>？</span></div>
+          <div class="bcard back"><span>？</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 機能一覧 ============ -->
 <section>
   <div class="wrap">
@@ -645,6 +711,7 @@
       <div class="card"><div class="ico">🎬</div><b>疑似観戦</b><span>試合を時系列で再生。回を選んで途中からも見られます。</span></div>
       <div class="card"><div class="ico">💬</div><b>途中経過の共有</b><span>回の終わりに、スコアと打席を LINE などへ。文字だけで送ります。</span></div>
       <div class="card"><div class="ico">🃏</div><b>選手カード</b><span>実際に撮った写真でカードに。背番号・守備・成績が並びます。</span></div>
+      <div class="card"><div class="ico">🔄</div><b>カード交換・コレクション</b><span>AirDrop で手渡し。もらったカードはコレクションに貯まります。</span></div>
       <div class="card"><div class="ico">📅</div><b>試合カレンダー</b><span>記録した試合が月ごとに並びます。</span></div>
       <div class="card"><div class="ico">🗺</div><b>試合マップ</b><span>行った球場が地図に残ります。天気も自動で記録。</span></div>
       <div class="card"><div class="ico">📕</div><b>思い出アルバム</b><span>期間を選ぶと、写真中心の1冊に。A4 PDF とプリント用画像。</span></div>
@@ -751,6 +818,10 @@
     <details>
       <summary>チームのみんなで使えますか？</summary>
       <p>はい。招待コードを配ると、同じチームに参加できます。共有されるのは点数・試合の経過・背番号までで、選手の名前や写真は共有されません。メンバーは全員同じ権限なので、卒団で誰が抜けても引き継ぎの作業が要りません。</p>
+    </details>
+    <details>
+      <summary>友だちとカードを交換できますか？</summary>
+      <p>はい。選手カードを AirDrop で近くの相手の iPhone に直接渡せます。渡すのは端末どうしで、サーバーには送りません。カードに入るのは写真・下の名前・背番号だけで、成績は含まれません。もらったカードはアプリの「コレクション」に貯まります。交換には、相手も Baseball LOG アプリが必要です。</p>
     </details>
     <details>
       <summary>Android 版はありますか？</summary>
