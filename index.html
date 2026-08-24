@@ -236,27 +236,6 @@
   }
   .shot-plain img { width: 100%; height: auto; }
 
-  /* コレクション（バインダー風）。1枚は実写カード、残りは「これから集める」裏面 */
-  .binder {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem;
-    width: min(320px, 100%);
-    padding: 0.9rem; border-radius: 18px;
-    background: var(--navy-soft);
-    box-shadow: 0 18px 44px rgba(0,0,0,0.18);
-  }
-  .binder .bcard {
-    aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden;
-    background: #223047; border: 1px solid rgba(255,255,255,0.08);
-  }
-  .binder .bcard img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-  .binder .bcard.back {
-    display: flex; align-items: center; justify-content: center;
-    background:
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 6px, transparent 6px 12px),
-      linear-gradient(160deg, var(--crimson-deep), var(--navy));
-  }
-  .binder .bcard.back span { color: rgba(255,255,255,0.55); font-size: 1.5rem; font-weight: 800; }
-
   .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 0 0 1rem; font-size: 0.88rem; }
   .legend span { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
   .legend i { width: 0.72rem; height: 0.72rem; border-radius: 50%; display: inline-block; }
@@ -673,7 +652,7 @@
         <h3>AirDrop で、手渡しみたいに</h3>
         <p>
           チームのみんなのカードを、近くにいる相手の iPhone へ <strong>AirDrop で直接</strong>渡せます。
-          もらったカードは <strong>「コレクション」</strong> にまとまって、めくって眺められます。
+          もらったカードは <strong>「コレクション」</strong> に、チームごとにまとまって並びます。
         </p>
         <ul>
           <li>渡すのは端末どうしで直接。<strong>サーバーには送りません</strong></li>
@@ -685,14 +664,7 @@
         </p>
       </div>
       <div class="fshot">
-        <div class="binder" aria-label="集めたカードが並ぶコレクションのイメージ">
-          <div class="bcard"><img src="images/card.png" alt="コレクションに入った選手カード" /></div>
-          <div class="bcard back"><span>？</span></div>
-          <div class="bcard back"><span>？</span></div>
-          <div class="bcard back"><span>？</span></div>
-          <div class="bcard back"><span>？</span></div>
-          <div class="bcard back"><span>？</span></div>
-        </div>
+        <div class="shot-plain"><img src="images/collection.jpg" alt="集めた選手カードが2列に並んだコレクション画面。背番号・下の名前・チーム名が入っている" /></div>
       </div>
     </div>
   </div>
