@@ -239,6 +239,24 @@
   }
   .shot-plain img { width: 100%; height: auto; }
 
+  /* ひとことメモの見せ場：球場色のパネルに白い吹き出しを重ねる（実スクショ不要・名前が写らない） */
+  .memo-demo {
+    width: 300px; max-width: 100%;
+    background: linear-gradient(160deg, #2e9e52, #14622f);
+    border-radius: 22px; padding: 1.5rem 1.3rem;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.2);
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .memo-demo .memo-cap { color: rgba(255,255,255,0.92); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-align: center; }
+  .memo-bubble {
+    background: #fff; border-radius: 14px; padding: 0.7rem 0.95rem;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.18); align-self: flex-start; max-width: 92%;
+  }
+  .memo-bubble.right { align-self: flex-end; }
+  .memo-bubble .who { display: block; font-size: 0.72rem; color: var(--muted); font-weight: 600; margin-bottom: 0.1rem; }
+  .memo-bubble .msg { font-size: 1.02rem; font-weight: 800; color: var(--ink); }
+  .memo-bubble .msg::before { content: "💬 "; }
+
   .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 0 0 1rem; font-size: 0.88rem; }
   .legend span { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
   .legend i { width: 0.72rem; height: 0.72rem; border-radius: 50%; display: inline-block; }
@@ -608,6 +626,30 @@
       </div>
     </div>
 
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <h3>その一言が、あとで効いてくる</h3>
+        <p>
+          打席や守備に、<strong>ひとことメモ</strong>を添えられます。「ライト惜しい！」「初ヒット！」——
+          スコアには残らない<strong>その瞬間の気持ち</strong>が、あとで疑似観戦を見返すと、
+          その場面で<strong>吹き出しになって出てきます</strong>。
+        </p>
+        <ul>
+          <li>スコアブックにも小さな折り目印が付き、タップで全文が読めます</li>
+          <li>メモは<strong>あなたの端末の中だけ</strong>。共有には含まれません</li>
+          <li>AI ではなく、あなたが書いた言葉そのままです</li>
+        </ul>
+      </div>
+      <div class="fshot">
+        <div class="memo-demo" role="img" aria-label="疑似観戦で、打席に添えたひとことメモが吹き出しで表示されている例">
+          <span class="memo-cap">疑似観戦で、その場面に吹き出しで出る</span>
+          <div class="memo-bubble"><span class="who">1回裏 相手（1番）</span><span class="msg">ライト惜しい！</span></div>
+          <div class="memo-bubble right"><span class="who">3回表 4番</span><span class="msg">初ヒット！</span></div>
+          <div class="memo-bubble"><span class="who">5回裏 ショート</span><span class="msg">ナイスカバー</span></div>
+        </div>
+      </div>
+    </div>
+
     <p style="text-align:center; color:var(--muted); font-size:0.82rem; margin:2.5rem 0 0;">
       ※ 画面はすべて記入例です。
     </p>
@@ -685,6 +727,7 @@
       <div class="card"><div class="ico">📖</div><b>早稲田式スコアブック</b><span>画面・PDF・印刷。守備位置の変更や代打も正しく積みます。</span></div>
       <div class="card"><div class="ico">📊</div><b>成績の自動集計</b><span>打率・出塁率・長打率・OPS／防御率・WHIP。大会ごとの成績も。</span></div>
       <div class="card"><div class="ico">🎬</div><b>疑似観戦</b><span>試合を時系列で再生。回を選んで途中からも見られます。</span></div>
+      <div class="card"><div class="ico">📝</div><b>ひとことメモ</b><span>打席に一言を添えると、疑似観戦でその場面に吹き出しで出ます。端末内だけ。</span></div>
       <div class="card"><div class="ico">💬</div><b>途中経過の共有</b><span>回の終わりに、スコアと打席を LINE などへ。文字だけで送ります。</span></div>
       <div class="card"><div class="ico">🃏</div><b>選手カード</b><span>実際に撮った写真でカードに。背番号・守備・成績が並びます。</span></div>
       <div class="card"><div class="ico">🔄</div><b>カード交換・コレクション</b><span>AirDrop で手渡し。もらったカードはコレクションに貯まります。</span></div>
