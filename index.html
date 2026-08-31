@@ -103,6 +103,22 @@
         "@type": "Answer",
         "text": "使えます。少年野球の保護者を中心に考えて作っていますが、記録の仕組みは公認野球規則にそっているので、草野球・社会人・部活動でもそのまま使えます。"
       }
+    },
+    {
+      "@type": "Question",
+      "name": "記録できる人がチームにいなくても使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。点数（結果）だけの登録でも、勝敗や成績はカードに積み上がり、試合はカレンダーと地図に残ります。書ける人がいれば、タップ記録でスコアブックまで作れます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "一人が記録すれば、チーム全員のカードに反映されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。招待コードでつながっていれば、誰かが記録した試合がチーム全員に届きます。あなたの端末では背番号が名簿の選手に結びつき、その子のカードと成績に反映されます。共有はスコア・試合の経過・背番号までで、名前と写真は各自の端末内のみです。"
+      }
     }
   ]
 }
@@ -239,23 +255,17 @@
   }
   .shot-plain img { width: 100%; height: auto; }
 
-  /* ひとことメモの見せ場：球場色のパネルに白い吹き出しを重ねる（実スクショ不要・名前が写らない） */
-  .memo-demo {
-    width: 300px; max-width: 100%;
-    background: linear-gradient(160deg, #2e9e52, #14622f);
-    border-radius: 22px; padding: 1.5rem 1.3rem;
-    box-shadow: 0 18px 44px rgba(0,0,0,0.2);
-    display: flex; flex-direction: column; gap: 0.75rem;
-  }
-  .memo-demo .memo-cap { color: rgba(255,255,255,0.92); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-align: center; }
-  .memo-bubble {
-    background: #fff; border-radius: 14px; padding: 0.7rem 0.95rem;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.18); align-self: flex-start; max-width: 92%;
-  }
-  .memo-bubble.right { align-self: flex-end; }
-  .memo-bubble .who { display: block; font-size: 0.72rem; color: var(--muted); font-weight: 600; margin-bottom: 0.1rem; }
-  .memo-bubble .msg { font-size: 1.02rem; font-weight: 800; color: var(--ink); }
-  .memo-bubble .msg::before { content: "💬 "; }
+  /* チーム共有の流れ図：記録係ひとり → クラウド → 全員のカード */
+  .team-flow { width: 300px; max-width: 100%; display: flex; flex-direction: column; gap: 0.5rem; }
+  .tf-node { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 0.9rem 1rem; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+  .tf-node .tf-emoji { font-size: 1.4rem; line-height: 1; }
+  .tf-node b { display: block; margin: 0.25rem 0 0.1rem; font-size: 1rem; }
+  .tf-node span { color: var(--muted); font-size: 0.85rem; }
+  .tf-node.cloud { background: var(--navy); border-color: var(--navy); text-align: center; }
+  .tf-node.cloud b { color: var(--gold); }
+  .tf-node.cloud span { color: #c8d4e0; }
+  .tf-node.team { border-color: var(--gold); background: linear-gradient(180deg, #fffdf6, #fff); }
+  .tf-arrow { text-align: center; color: var(--crimson); font-size: 1.25rem; line-height: 1; }
 
   .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 0 0 1rem; font-size: 0.88rem; }
   .legend span { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
@@ -424,12 +434,12 @@
 <header class="hero">
   <div class="wrap">
     <div>
-      <span class="badge">野球スコアブックアプリ｜iPhone / iPad</span>
-      <h1>野球の記録を、<br /><span class="hl">思い出に変える。</span></h1>
+      <span class="badge">野球トレカ × スコア記録｜iPhone / iPad</span>
+      <h1>チームの選手が、<br /><span class="hl">“トレカ”になる。</span></h1>
       <p class="lead">
-        打球が飛んだ場所をタップするだけで、そのまま早稲田式スコアブックになる野球記録アプリ。<br />
-        試合の日も、球場も、スコアも、その日の天気も。<br />
-        バラバラだった1年ぶんを、ひとつにまとめて残しておけます。
+        実際に撮った写真で、チームの子どもたちが野球トレカに。<br />
+        記録するのは<strong>誰か一人でいい</strong>——その1試合が、チーム全員のカードに成績を積み上げていきます。<br />
+        タップで記録、疑似観戦、早稲田式スコアブックまで。野球の記録を、思い出に変えるアプリです。
       </p>
       <div class="cta-row">
         <a class="btn btn-main" href="https://apps.apple.com/app/baseball-log/id6795148572">App Store で入手</a>
@@ -439,7 +449,7 @@
     </div>
     <div class="hero-shot">
       <div class="phone lg">
-        <div class="screen" data-label="images/home.jpg を置く"><img src="images/home.jpg" alt="Baseball LOG のホーム画面。チーム名と選手カードが並んでいる" /></div>
+        <div class="screen" data-label="images/card.png を置く"><img src="images/card.png" alt="実際に撮った写真でつくった、Baseball LOG の選手カード（野球トレカ）" /></div>
       </div>
     </div>
   </div>
@@ -458,10 +468,153 @@
   </div>
 </section>
 
-<!-- ============ ① 思い出として残る ============ -->
-<section id="how" class="band">
+<!-- ============ ① トレカ（主役） ============ -->
+<section id="how">
   <div class="wrap">
-    <p class="eyebrow">1 ／ 思い出として残る</p>
+    <p class="eyebrow">1 ／ このアプリの主役</p>
+    <h2><span class="mark">チームの選手が、“野球トレカ”になる</span></h2>
+    <p class="sub">記録をつけていくと、子どもひとりひとりに実写の「選手カード」ができあがります。スコアを書けるアプリはたくさんありますが、<strong>チームみんなをトレカで集めて楽しめる</strong>のは、このアプリだけの特徴です。</p>
+
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <h3>撮った写真が、そのままカードに</h3>
+        <p>
+          チーム名・背番号・守備位置と、あなたが撮った<strong>実際の写真</strong>でカードになります。
+          外部の AI に送って加工することはありません。ホーム色・アウェイ色の2通りで表示できます。
+        </p>
+        <ul>
+          <li>成績にあわせて、ひとことのキャッチが自動で付きます</li>
+          <li>打率・安打・本塁打・打点・得点・OPS が並びます</li>
+          <li>スワイプで、チームのみんなのカードをめくれます</li>
+        </ul>
+        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
+          <span class="save">Premium</span> カードに公式戦成績を反映するのは Premium です。カードの表示そのものは無料で使えます。
+        </p>
+      </div>
+      <div class="fshot">
+        <div class="phone lg"><div class="screen"><img src="images/card.png" alt="実際に撮った写真でつくった選手カード" /></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ② 集めて、交換する ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">2 ／ 集めて、交換する</p>
+    <h2><span class="mark">そのカード、友だちと交換できる</span></h2>
+    <p class="sub">自分の子のカードを、友だちのお父さん・お母さんに渡せます。もらったカードは「コレクション」に貯まっていく。トレカを交換した、あの感覚です。</p>
+
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <h3>AirDrop で、手渡しみたいに</h3>
+        <p>
+          チームのみんなのカードを、近くにいる相手の iPhone へ <strong>AirDrop で直接</strong>渡せます。
+          もらったカードは <strong>「コレクション」</strong> に、チームごとにまとまって並びます。
+        </p>
+        <ul>
+          <li>渡すのは端末どうしで直接。<strong>サーバーには送りません</strong></li>
+          <li>カードに入るのは<strong>写真・下の名前・背番号だけ</strong>。成績は入りません</li>
+          <li>もらったカードは「コレクション」に貯まっていきます</li>
+        </ul>
+        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
+          交換には、相手も Baseball LOG アプリが必要です。
+        </p>
+      </div>
+      <div class="fshot">
+        <div class="shot-plain"><img src="images/collection.jpg" alt="集めた選手カードが2列に並んだコレクション画面。背番号・下の名前・チーム名が入っている" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ③ チーム共有：一人が記録すれば全員へ ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">3 ／ 記録するのは、一人でいい</p>
+    <h2><span class="mark">誰か一人が記録すれば、チーム全員に積み上がる</span></h2>
+    <p class="sub">全員がスコアを書く必要はありません。記録できる人が一人いれば、その試合の結果・経過・成績がチーム全員に届き、それぞれのカードに積み上がっていきます。</p>
+
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <h3>招待コードでつながって、分け合う</h3>
+        <p>
+          招待コードで同じチームに入ると、誰かがタップ記録した試合が<strong>チーム全員のアプリに届きます</strong>。
+          あなたの端末では、背番号があなたの名簿の子に結びつき、<strong>その子のカードと成績にそのまま反映</strong>されます。
+        </p>
+        <ul>
+          <li>共有されるのは<strong>スコア・試合の経過・背番号だけ</strong></li>
+          <li><strong>名前と写真は各自の端末の中だけ</strong>。サーバーには送りません</li>
+          <li>記録係がいる日も、いない日も、チームのデータは1か所に貯まります</li>
+        </ul>
+        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
+          <span class="save">Premium</span> 共有された成績をカードに反映するのは Premium です。
+        </p>
+      </div>
+      <div class="fshot">
+        <div class="team-flow" role="img" aria-label="記録係ひとりの記録が、クラウドを通じてチーム全員のカードに届く流れ">
+          <div class="tf-node"><span class="tf-emoji">🧢</span><b>記録する人、ひとり</b><span>球場でタップ記録。スコアだけの登録でもOK。</span></div>
+          <div class="tf-arrow">↓</div>
+          <div class="tf-node cloud"><span class="tf-emoji">☁️</span><b>チームで共有</b><span>スコア・試合の経過・背番号だけ（名前と写真は送りません）</span></div>
+          <div class="tf-arrow">↓</div>
+          <div class="tf-node team"><span class="tf-emoji">🃏🃏🃏</span><b>全員のカードに積み上がる</b><span>背番号が、あなたの名簿の子に結びつきます。</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ④ 記録係がいなくても ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">4 ／ 記録係がいなくても</p>
+    <h2><span class="mark">きっちり書いても、結果だけでも</span></h2>
+    <p class="sub">「スコアブックを書ける人がいない」——そんなチームでも大丈夫。書ける人がいればフル記録、いなければ結果だけ。どちらでも成立します。</p>
+
+    <div class="feature">
+      <div class="ftext">
+        <span class="num">1</span>
+        <h3>飛んだところを、タップするだけ</h3>
+        <p>
+          画面は球場の絵です。レフトに飛んだらレフトを押す。すると<strong>そこで起こりうる結果だけ</strong>が出てきます。
+          四球や三振は下のボタンひとつ。アウトカウントも走者も得点も、アプリが公認野球規則にそって計算します。
+        </p>
+        <ul>
+          <li>1打席あたり3タップ以内。野球のルールを知らなくても書けます</li>
+          <li>記録はそのまま<strong>早稲田式スコアブック</strong>（A4 PDF・印刷可）に</li>
+          <li>打率・出塁率・OPS、防御率・WHIP まで自動集計します</li>
+        </ul>
+      </div>
+      <div class="fshot">
+        <div class="phone"><div class="screen"><img src="images/live.jpg" alt="球場のイラストが表示された試合記録画面" /></div></div>
+      </div>
+    </div>
+
+    <div class="feature" style="margin-bottom:0;">
+      <div class="ftext">
+        <span class="num">2</span>
+        <h3>記録係がいない日は、結果だけ</h3>
+        <p>
+          詳しく記録する人がいなくても、<strong>スコア（点数）だけの登録</strong>でOK。
+          それでも試合はカレンダーと地図に残り、勝敗の成績はカードに積み上がります。あとから打席を足すこともできます。
+        </p>
+        <ul>
+          <li>忙しい日・観られない日でも、結果ひとつで記録が続きます</li>
+          <li>スコアだけの試合も、試合マップとカレンダーに残ります</li>
+          <li>「書ける人が現れたら、そこから詳しく」も自由です</li>
+        </ul>
+      </div>
+      <div class="fshot">
+        <div class="phone"><div class="screen"><img src="images/scorebook.jpg" alt="早稲田式で表示されたスコアブックの画面" /></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 思い出として残る ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">5 ／ 思い出として残る</p>
     <h2><span class="mark">1年が終わったとき、手元に残るもの</span></h2>
     <p class="sub">試合の日・場所・スコア・成績・天気・写真。ひとつずつはメモでも残せますが、つながっていないと後から思い出せません。</p>
 
@@ -535,57 +688,10 @@
   </div>
 </section>
 
-<!-- ============ ② だれでも書ける ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">2 ／ だれでも書ける</p>
-    <h2><span class="mark">「スコアブック、誰か書ける人いませんか？」</span></h2>
-    <p class="sub">少年野球の当番で、いちばん困るのがこれです。その「書ける人」を、アプリが引き受けます。</p>
-
-    <div class="feature">
-      <div class="ftext">
-        <span class="num">1</span>
-        <h3>飛んだところを、タップする</h3>
-        <p>
-          画面は球場の絵です。レフトに飛んだらレフトを押す。すると<strong>そこで起こりうる結果だけ</strong>が出てきます。
-          「ヒット」「フライ」「エラー」から選ぶだけ。四球や三振は下のボタンひとつです。
-        </p>
-        <ul>
-          <li>1打席あたり、3タップ以内で終わります</li>
-          <li>アウトカウント・走者の進塁・得点・打点は、アプリが公認野球規則にそって計算します</li>
-          <li>片手で持ったまま操作できます</li>
-        </ul>
-      </div>
-      <div class="fshot">
-        <div class="phone"><div class="screen"><img src="images/live.jpg" alt="球場のイラストが表示された試合記録画面" /></div></div>
-      </div>
-    </div>
-
-    <div class="feature" style="margin-bottom:0;">
-      <div class="ftext">
-        <span class="num">2</span>
-        <h3>そのまま、スコアブックになる</h3>
-        <p>
-          タップした記録は、<strong>早稲田式のスコアブック</strong>として仕上がります。市販のスコアブックと同じ書き方なので、
-          監督やコーチにそのまま渡せます。
-        </p>
-        <ul>
-          <li>A4 の PDF で保存・共有できます</li>
-          <li>そのまま印刷して、紙のバインダーに綴じられます</li>
-          <li>打率・出塁率・OPS、防御率・WHIP まで自動で集計します</li>
-        </ul>
-      </div>
-      <div class="fshot">
-        <div class="phone"><div class="screen"><img src="images/scorebook.jpg" alt="早稲田式で表示されたスコアブックの画面" /></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ③ 行けなかった人へ ============ -->
+<!-- ============ 行けなかった人へ ============ -->
 <section class="band">
   <div class="wrap">
-    <p class="eyebrow">3 ／ 行けなかった人にも届く</p>
+    <p class="eyebrow">6 ／ 行けなかった人にも届く</p>
     <h2><span class="mark">仕事で行けなくても、その日の試合が分かる</span></h2>
     <p class="sub">「勝ったの？」の一言で終わらせない。球場にいる人と、いない人のあいだをつなぎます。</p>
 
@@ -641,78 +747,13 @@
         </ul>
       </div>
       <div class="fshot">
-        <div class="memo-demo" role="img" aria-label="疑似観戦で、打席に添えたひとことメモが吹き出しで表示されている例">
-          <span class="memo-cap">疑似観戦で、その場面に吹き出しで出る</span>
-          <div class="memo-bubble"><span class="who">1回裏 相手（1番）</span><span class="msg">ライト惜しい！</span></div>
-          <div class="memo-bubble right"><span class="who">3回表 4番</span><span class="msg">初ヒット！</span></div>
-          <div class="memo-bubble"><span class="who">5回裏 ショート</span><span class="msg">ナイスカバー</span></div>
-        </div>
+        <div class="phone"><div class="screen"><img src="images/memo-replay.jpg" alt="疑似観戦で、打席に添えたひとことメモが吹き出しで表示されている画面" /></div></div>
       </div>
     </div>
 
     <p style="text-align:center; color:var(--muted); font-size:0.82rem; margin:2.5rem 0 0;">
       ※ 画面はすべて記入例です。
     </p>
-  </div>
-</section>
-
-<!-- ============ ④ 選手カード ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">4 ／ ひとりひとりが主役</p>
-    <h2><span class="mark">トレカみたいに、その子だけの1枚</span></h2>
-    <p class="sub">記録をつけていくと、子どもひとりひとりに「選手カード」ができあがります。実際に撮った写真で、その子だけの1枚に。</p>
-
-    <div class="feature" style="margin-bottom:0;">
-      <div class="ftext">
-        <h3>撮った写真が、そのままカードに</h3>
-        <p>
-          チーム名・背番号・守備位置と、あなたが撮った<strong>実際の写真</strong>でカードになります。
-          外部の AI に送って加工することはありません。ホーム色・アウェイ色の2通りで表示できます。
-        </p>
-        <ul>
-          <li>成績にあわせて、ひとことのキャッチが自動で付きます</li>
-          <li>打率・安打・本塁打・打点・得点・OPS が並びます</li>
-          <li>スワイプで、チームのみんなのカードをめくれます</li>
-        </ul>
-        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
-          <span class="save">Premium</span> カードに公式戦成績を反映するのは Premium です。カードの表示そのものは無料で使えます。
-        </p>
-      </div>
-      <div class="fshot">
-        <div class="phone lg"><div class="screen" data-label="images/card.png を置く"><img src="images/card.png" alt="実際に撮った写真でつくった、背番号5番の選手カード" /></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ⑤ 集めて、交換する ============ -->
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">5 ／ 集めて、交換する</p>
-    <h2><span class="mark">そのカード、友だちと交換できる</span></h2>
-    <p class="sub">自分の子のカードを、友だちのお父さん・お母さんに渡せます。もらったカードは「コレクション」に貯まっていく。トレカを交換した、あの感覚です。</p>
-
-    <div class="feature" style="margin-bottom:0;">
-      <div class="ftext">
-        <h3>AirDrop で、手渡しみたいに</h3>
-        <p>
-          チームのみんなのカードを、近くにいる相手の iPhone へ <strong>AirDrop で直接</strong>渡せます。
-          もらったカードは <strong>「コレクション」</strong> に、チームごとにまとまって並びます。
-        </p>
-        <ul>
-          <li>渡すのは端末どうしで直接。<strong>サーバーには送りません</strong></li>
-          <li>カードに入るのは<strong>写真・下の名前・背番号だけ</strong>。成績は入りません</li>
-          <li>もらったカードは「コレクション」に貯まっていきます</li>
-        </ul>
-        <p style="margin:1.2rem 0 0; font-size:0.86rem; color:var(--muted); line-height:1.7;">
-          交換には、相手も Baseball LOG アプリが必要です。
-        </p>
-      </div>
-      <div class="fshot">
-        <div class="shot-plain"><img src="images/collection.jpg" alt="集めた選手カードが2列に並んだコレクション画面。背番号・下の名前・チーム名が入っている" /></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -735,7 +776,7 @@
       <div class="card"><div class="ico">🗺</div><b>試合マップ</b><span>行った球場が地図に残ります。天気も自動で記録。</span></div>
       <div class="card"><div class="ico">📕</div><b>思い出アルバム</b><span>期間を選ぶと、写真中心の1冊に。A4 PDF とプリント用画像。</span></div>
       <div class="card"><div class="ico">✈️</div><b>オフライン記録</b><span>電波の弱い球場でも記録できます。通信は必要ありません。</span></div>
-      <div class="card"><div class="ico">👥</div><b>チーム共有</b><span>招待コードでチームに参加。試合の経過を分け合えます。</span></div>
+      <div class="card"><div class="ico">👥</div><b>チーム共有</b><span>招待コードで参加。誰か一人が記録すれば、成績がチーム全員のカードに積み上がります。</span></div>
       <div class="card"><div class="ico">💾</div><b>バックアップ</b><span>記録と写真をまるごと書き出し・復元。機種変更も安心です。</span></div>
       <div class="card"><div class="ico">🏆</div><b>大会・練習試合</b><span>公式戦と練習試合を分けて集計できます。</span></div>
     </div>
@@ -841,6 +882,14 @@
     <details>
       <summary>友だちとカードを交換できますか？</summary>
       <p>はい。選手カードを AirDrop で近くの相手の iPhone に直接渡せます。渡すのは端末どうしで、サーバーには送りません。カードに入るのは写真・下の名前・背番号だけで、成績は含まれません。もらったカードはアプリの「コレクション」に貯まります。交換には、相手も Baseball LOG アプリが必要です。</p>
+    </details>
+    <details>
+      <summary>記録できる人がチームにいなくても使えますか？</summary>
+      <p>使えます。点数（結果）だけの登録でも、勝敗や成績はカードに積み上がり、試合はカレンダーと地図に残ります。もちろん、書ける人がいればタップ記録でスコアブックまで作れます。記録できる人が一人いれば、チームの記録はどんどん貯まっていきます。</p>
+    </details>
+    <details>
+      <summary>一人が記録すれば、チーム全員のカードに反映されますか？</summary>
+      <p>はい。招待コードでつながっていれば、誰かが記録した試合がチーム全員に届きます。あなたの端末では背番号があなたの名簿の選手に結びつき、その子のカードと成績に反映されます。共有されるのはスコア・試合の経過・背番号までで、名前と写真は各自の端末の中だけです（カードへの成績反映は Premium）。</p>
     </details>
     <details>
       <summary>Android 版はありますか？</summary>
