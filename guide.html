@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>使い方｜Baseball LOG（野球スコアブックアプリ）</title>
+<meta name="description" content="Baseball LOG の使い方。アプリを入れてチームを作り、球場の絵をタップして試合を記録、あとからスコアブック・成績・疑似観戦で振り返るまでを、はじめての保護者向けにやさしく説明します。" />
+<link rel="icon" href="images/icon.png" />
+<link rel="apple-touch-icon" href="images/icon.png" />
+<link rel="canonical" href="https://baseball-log.com/guide.html" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Baseball LOG" />
+<meta property="og:title" content="Baseball LOG の使い方" />
+<meta property="og:description" content="アプリを入れて、チームを作り、球場の絵をタップして記録するだけ。はじめての保護者向けの使い方ガイドです。" />
+<meta property="og:url" content="https://baseball-log.com/guide.html" />
+<meta property="og:image" content="https://baseball-log.com/images/home.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@BaseballLOG_jp" />
+
+<!--
+  使い方ガイドの手順（HowTo）を Google に機械可読で伝える。
+  本文の手順を増減したら、ここの step も揃えること。
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Baseball LOG の使い方",
+  "description": "アプリを入れてチームを作り、球場の絵をタップして試合を記録し、あとから振り返るまでの手順。",
+  "image": "https://baseball-log.com/images/home.jpg",
+  "totalTime": "PT10M",
+  "step": [
+    { "@type": "HowToStep", "name": "アプリを入れて、チームを用意する", "text": "App Store から入れて、チームを新しく作るか、招待コードで既存のチームに参加します。" },
+    { "@type": "HowToStep", "name": "試合をつくる", "text": "日付・時間・会場・相手・大会名を入れます。会場を選ぶと天気と地図は自動で記録されます。" },
+    { "@type": "HowToStep", "name": "試合を記録する", "text": "球場の絵で、打球が飛んだ守備位置をタップし、出てきた結果から選びます。四球や三振は下のボタンで入れます。" },
+    { "@type": "HowToStep", "name": "試合のあいだに共有する", "text": "回が終わるたびに、スコアとその回の打席をまとめて LINE などへ送れます。" },
+    { "@type": "HowToStep", "name": "あとで振り返る", "text": "スコアブック・成績・疑似観戦で、試合をあとから見返せます。スコアブックは A4 PDF で保存・印刷できます。" },
+    { "@type": "HowToStep", "name": "思い出として残す", "text": "写真・選手カード・カード交換・アルバム・試合マップで、シーズンを1か所に集めておけます。" }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --crimson: #a4162a;
+    --crimson-deep: #7d0f20;
+    --navy: #0e1a2b;
+    --navy-soft: #16243a;
+    --gold: #f5b301;
+    --cream: #fffaf5;
+    --ink: #17202b;
+    --muted: #5d6b7a;
+    --line: #e6e2dd;
+    --green: #1b6b3a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* ---------- ヘッダー ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14, 26, 43, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .bar .wrap { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0; }
+  .bar img { width: 34px; height: 34px; border-radius: 9px; }
+  .bar b { color: #fff; font-size: 1rem; letter-spacing: 0.02em; }
+  .bar .sp { flex: 1; }
+  .bar a.nav { color: #cfd9e4; text-decoration: none; font-size: 0.86rem; font-weight: 700; white-space: nowrap; }
+  .bar a.nav:hover { color: #fff; }
+  .bar a.mini {
+    color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 700;
+    background: var(--crimson); padding: 0.42rem 0.9rem; border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* ---------- 見出し（ガイド用ヒーロー） ---------- */
+  .guide-hero {
+    background:
+      radial-gradient(1100px 520px at 80% -10%, rgba(164,22,42,0.5), transparent 60%),
+      linear-gradient(170deg, #0e1a2b 0%, #142338 60%, #1d1420 100%);
+    color: #fff; padding: 3rem 0;
+  }
+  .guide-hero .badge {
+    display: inline-block; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--gold); border: 1px solid rgba(245,179,1,0.5);
+    padding: 0.22rem 0.7rem; border-radius: 999px; margin-bottom: 1rem;
+  }
+  .guide-hero h1 { font-size: clamp(1.7rem, 4.6vw, 2.4rem); line-height: 1.4; margin: 0 0 0.9rem; }
+  .guide-hero p { color: #d9e2ec; margin: 0; font-size: 1rem; }
+
+  /* ---------- もくじ ---------- */
+  .toc { background: #fff; border-block: 1px solid var(--line); }
+  .toc .wrap { padding: 1.4rem 0; }
+  .toc ol {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.55rem 1.2rem;
+    counter-reset: toc;
+  }
+  .toc li { counter-increment: toc; }
+  .toc a { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 0.95rem; }
+  .toc a:hover { color: var(--crimson); }
+  .toc a::before {
+    content: counter(toc);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.7rem; height: 1.7rem; flex: 0 0 auto; border-radius: 50%;
+    background: var(--crimson); color: #fff; font-size: 0.85rem; font-weight: 800;
+  }
+
+  /* ---------- セクション共通 ---------- */
+  section.step { padding: 3.2rem 0; border-bottom: 1px solid var(--line); }
+  section.step:nth-child(even) { background: #fff; }
+  .eyebrow { color: var(--crimson); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.14em; margin: 0 0 0.5rem; }
+  h2 { font-size: clamp(1.35rem, 3.4vw, 1.9rem); line-height: 1.55; margin: 0 0 1rem; }
+  .mark {
+    --marker: rgba(245, 179, 1, 0.55);
+    background-image: linear-gradient(to bottom, transparent 50%, var(--marker) 50%, var(--marker) 95%, transparent 95%);
+    padding: 0 0.14em; border-radius: 0.1em;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+
+  .row { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center; }
+  section.step:nth-child(even) .shotcol { order: -1; }
+  .shotcol { display: flex; justify-content: center; }
+  .body p { margin: 0 0 0.9rem; color: #34414f; }
+  .body strong { color: var(--ink); }
+
+  /* 手順の細かいステップ */
+  ol.mini { margin: 0.2rem 0 0; padding: 0; list-style: none; counter-reset: mini; }
+  ol.mini li { position: relative; padding-left: 2.2rem; margin-bottom: 0.7rem; counter-increment: mini; color: #34414f; }
+  ol.mini li::before {
+    content: counter(mini); position: absolute; left: 0; top: 0.1rem;
+    width: 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--cream); border: 1.5px solid var(--crimson); color: var(--crimson);
+    font-size: 0.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  }
+  ul.plain { margin: 0.4rem 0 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.92rem; }
+  ul.plain li { margin-bottom: 0.3rem; }
+
+  .tip {
+    margin-top: 1.1rem; background: rgba(245, 179, 1, 0.14);
+    border: 1px solid rgba(245, 179, 1, 0.5); border-radius: 12px;
+    padding: 0.8rem 1rem; font-size: 0.9rem; color: #4a3600;
+  }
+  .tip b { color: var(--crimson); }
+  .free {
+    display: inline-block; font-size: 0.72rem; font-weight: 800;
+    background: var(--green); color: #fff; padding: 0.14rem 0.55rem; border-radius: 999px;
+    margin-left: 0.4rem; vertical-align: middle;
+  }
+  .paid {
+    display: inline-block; font-size: 0.72rem; font-weight: 800;
+    background: var(--gold); color: #4a3600; padding: 0.14rem 0.55rem; border-radius: 999px;
+    margin-left: 0.4rem; vertical-align: middle;
+  }
+
+  /* ---------- 端末フレーム（LP と同じ） ---------- */
+  .phone {
+    width: 250px; border-radius: 34px; padding: 8px;
+    background: linear-gradient(160deg, #2c3644, #10161f);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.4);
+  }
+  .phone .screen { border-radius: 27px; overflow: hidden; background: #223047; aspect-ratio: 9 / 19.5; display: flex; position: relative; }
+  .phone .screen img { position: relative; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .shot-plain { width: 320px; max-width: 100%; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 18px 44px rgba(0,0,0,0.16); }
+  .shot-plain img { width: 100%; height: auto; }
+
+  /* ---------- 料金の早見 ---------- */
+  .cost { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .cost .box { border: 2px solid var(--line); border-radius: 16px; padding: 1.3rem 1.3rem 1.5rem; background: var(--cream); }
+  .cost .box.pro { border-color: var(--gold); background: linear-gradient(180deg, #fffdf6, #fff); }
+  .cost .box h3 { margin: 0 0 0.6rem; font-size: 1.1rem; }
+  .cost .box ul { margin: 0; padding-left: 1.15rem; font-size: 0.92rem; color: #34414f; }
+  .cost .box ul li { margin-bottom: 0.35rem; }
+
+  /* ---------- 困ったとき ---------- */
+  details {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 0.95rem 1.15rem; margin-bottom: 0.7rem;
+  }
+  details[open] { border-color: var(--crimson); }
+  summary { cursor: pointer; font-weight: 700; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "Q. "; color: var(--crimson); font-weight: 800; }
+  details p { margin: 0.7rem 0 0; color: #34414f; font-size: 0.93rem; }
+
+  /* ---------- 最後のCTA ---------- */
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; font-weight: 800; border-radius: 12px; padding: 0.85rem 1.5rem; font-size: 1rem; }
+  .btn-main { background: #fff; color: var(--navy); box-shadow: 0 10px 26px rgba(0,0,0,0.28); }
+  .final {
+    background: linear-gradient(160deg, var(--crimson-deep), var(--crimson) 60%, #5d0a18);
+    color: #fff; text-align: center; padding: 3.5rem 0;
+  }
+  .final h2 { color: #fff; }
+  .final .mark { --marker: rgba(245, 179, 1, 0.55); }
+  .final p { color: #ffd9de; margin: 0 0 1.6rem; }
+
+  /* ---------- フッター ---------- */
+  footer { background: #0a121e; color: #90a1b3; padding: 2.5rem 0; font-size: 0.86rem; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; margin-bottom: 1.2rem; }
+  footer a { color: #cfd9e4; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .row { grid-template-columns: 1fr; gap: 1.5rem; }
+    section.step:nth-child(even) .shotcol { order: 0; }
+    .cost { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
+      <img src="images/icon.png" alt="" />
+      <b>Baseball LOG</b>
+    </a>
+    <span class="sp"></span>
+    <a class="nav" href="index.html">ホーム</a>
+    <a class="mini" href="https://apps.apple.com/app/baseball-log/id6795148572">App Store で入手</a>
+  </div>
+</div>
+
+<!-- ============ 見出し ============ -->
+<header class="guide-hero">
+  <div class="wrap">
+    <span class="badge">使い方ガイド</span>
+    <h1>はじめてでも、迷わず記録できます</h1>
+    <p>
+      むずかしい設定はありません。アプリを入れて、球場の絵をタップするだけ。<br />
+      この順番どおりに進めれば、はじめての試合が記録できます。
+    </p>
+  </div>
+</header>
+
+<!-- ============ もくじ ============ -->
+<nav class="toc">
+  <div class="wrap">
+    <ol>
+      <li><a href="#s1">アプリを入れて、チームを用意する</a></li>
+      <li><a href="#s2">試合をつくる</a></li>
+      <li><a href="#s3">試合を記録する</a></li>
+      <li><a href="#s4">試合中に、途中経過を送る</a></li>
+      <li><a href="#s5">あとで振り返る</a></li>
+      <li><a href="#s6">思い出として残す</a></li>
+      <li><a href="#s7">料金と、困ったとき</a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ============ 1 ============ -->
+<section class="step" id="s1">
+  <div class="wrap">
+    <div class="row">
+      <div class="body">
+        <p class="eyebrow">STEP 1</p>
+        <h2><span class="mark">アプリを入れて、チームを用意する</span></h2>
+        <p>まずは App Store から入れます。<strong>アカウント登録は要りません</strong>。メールアドレスが必要になるのは、あとでチームを共有するときだけです。</p>
+        <ol class="mini">
+          <li>App Store で「Baseball LOG」を入れて開く</li>
+          <li>チームを<strong>新しく作る</strong>（チーム名を入れるだけ）</li>
+          <li>すでにチームがある人は、代わりに<strong>招待コードで参加</strong>する</li>
+          <li>選手を登録する（<strong>下の名前と背番号だけ</strong>。フルネームは入れません）</li>
+        </ol>
+        <div class="tip"><b>ヒント：</b>相手チームの選手は登録しなくて大丈夫です。記録のときは背番号だけで進みます。</div>
+      </div>
+      <div class="shotcol">
+        <div class="phone"><div class="screen"><img src="images/home.jpg" alt="チーム名と選手カードが並んだホーム画面" /></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="step" id="s2">
+  <div class="wrap">
+    <div class="row">
+      <div class="body">
+        <p class="eyebrow">STEP 2</p>
+        <h2><span class="mark">試合をつくる</span></h2>
+        <p>記録する前に、その日の試合を1つ作ります。入れるのは基本の情報だけです。</p>
+        <ol class="mini">
+          <li>日付・時間を選ぶ</li>
+          <li>会場（球場・グラウンド）を選ぶ</li>
+          <li>相手チーム名・大会名を入れる（公式戦か練習試合かも選べます）</li>
+        </ol>
+        <ul class="plain">
+          <li>会場を選ぶと、<strong>天気と地図の位置は自動で記録</strong>されます。住所を打つ必要はありません。</li>
+          <li>公式戦と練習試合は、あとで<strong>分けて集計</strong>できます。</li>
+        </ul>
+        <div class="tip"><b>電波が弱くても大丈夫：</b>記録そのものは圏外でも動きます。地図と天気だけは通信が要るので、そのときはアプリが知らせます。</div>
+      </div>
+      <div class="shotcol">
+        <div class="phone"><div class="screen"><img src="images/map.jpg" alt="記録した球場が地図にピンで残る試合マップ" /></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="step" id="s3">
+  <div class="wrap">
+    <div class="row">
+      <div class="body">
+        <p class="eyebrow">STEP 3</p>
+        <h2><span class="mark">試合を記録する — 飛んだところをタップ</span></h2>
+        <p>記録の画面は<strong>球場の絵</strong>です。スコアの知識は要りません。打球が飛んだ場所を押すだけです。</p>
+        <ol class="mini">
+          <li>打球が飛んだ<strong>守備位置をタップ</strong>する（例：レフト）</li>
+          <li>出てきた選択肢から結果を選ぶ（ヒット／フライ／ゴロ／エラーなど）</li>
+          <li>四球・死球・三振など<strong>打球が飛ばない結果</strong>は、下のボタンで入れる</li>
+        </ol>
+        <ul class="plain">
+          <li>1打席あたり<strong>3タップ以内</strong>。片手で持ったまま操作できます。</li>
+          <li>アウトカウント・走者の進塁・得点・打点は、<strong>アプリが公認野球規則にそって計算</strong>します。</li>
+          <li>犠打・犠飛のように条件のある結果は、<strong>条件を満たしたときだけ</strong>選択肢に出ます。</li>
+        </ul>
+        <div class="tip"><b>まちがえても平気：</b>結果はあとから直せます。まずは気軽にタップして進めてください。</div>
+      </div>
+      <div class="shotcol">
+        <div class="phone"><div class="screen"><img src="images/live.jpg" alt="球場のイラストが表示された試合記録画面" /></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="step" id="s4">
+  <div class="wrap">
+    <div class="row">
+      <div class="body">
+        <p class="eyebrow">STEP 4</p>
+        <h2><span class="mark">試合中に、途中経過を送る</span></h2>
+        <p>来られなかった人にも、試合が動くたびに届けられます。</p>
+        <ol class="mini">
+          <li>回が終わったら、<strong>共有ボタン</strong>を押す</li>
+          <li>スコアとその回の打席が文章にまとまる</li>
+          <li>LINE・メールなど、iPhone から送れるところへ送る</li>
+        </ol>
+        <ul class="plain">
+          <li>送るのは<strong>文字だけ</strong>。写真は入りません。</li>
+          <li>ボタンひとつで送れて、<strong>記録は止まりません</strong>。</li>
+        </ul>
+      </div>
+      <div class="shotcol">
+        <div class="shot-plain"><img src="images/line-share.jpg" alt="回の終わりに、スコアとその回の打席の結果をまとめて送ったメッセージ" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="step" id="s5">
+  <div class="wrap">
+    <div class="row">
+      <div class="body">
+        <p class="eyebrow">STEP 5</p>
+        <h2><span class="mark">あとで振り返る</span></h2>
+        <p>記録した試合は、いろいろな見方で振り返れます。</p>
+        <ul class="plain">
+          <li><strong>スコアブック</strong><span class="free">無料</span>：早稲田式で仕上がります。<strong>A4 の PDF</strong> で保存・印刷でき、監督やコーチにそのまま渡せます。</li>
+          <li><strong>成績</strong><span class="free">無料</span>：打率・出塁率・OPS、防御率・WHIP まで自動で集計します。</li>
+          <li><strong>疑似観戦</strong>：試合を最初から再生。「次へ」で走者が動き、点が入ります。回を選んで途中からも見られます。<span class="free">直近1試合は無料</span></li>
+        </ul>
+        <div class="tip"><b>写真について：</b>疑似観戦は、最後まで見終わったときに、その試合の写真をまとめて並べます。場面ごとに写真は出ません。</div>
+      </div>
+      <div class="shotcol">
+        <div class="phone"><div class="screen"><img src="images/scorebook.jpg" alt="早稲田式で表示されたスコアブックの画面" /></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="step" id="s6">
+  <div class="wrap">
+    <div class="row">
+      <div class="body">
+        <p class="eyebrow">STEP 6</p>
+        <h2><span class="mark">思い出として残す</span></h2>
+        <p>記録を続けると、シーズンぶんが1か所に集まっていきます。</p>
+        <ul class="plain">
+          <li><strong>選手カード</strong><span class="free">表示は無料</span>：実際に撮った写真で、その子だけの1枚に。成績の反映は Premium です。</li>
+          <li><strong>カード交換・コレクション</strong>：AirDrop で近くの相手の iPhone へ手渡し。もらったカードはコレクションに貯まります。カードに入るのは写真・下の名前・背番号だけです。</li>
+          <li><strong>試合カレンダー・試合マップ</strong>：いつ・どこで試合したかが、月ごと・地図に残ります。</li>
+          <li><strong>思い出アルバム</strong><span class="paid">Premium</span>：期間を選ぶと、写真中心の1冊に。A4 PDF とプリント用の画像で作れます。</li>
+        </ul>
+      </div>
+      <div class="shotcol">
+        <div class="shot-plain"><img src="images/collection.jpg" alt="集めた選手カードが並んだコレクション画面" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="step" id="s7">
+  <div class="wrap">
+    <p class="eyebrow">STEP 7</p>
+    <h2><span class="mark">料金と、困ったとき</span></h2>
+    <div class="cost" style="margin-bottom:2.2rem;">
+      <div class="box">
+        <h3>無料でできること</h3>
+        <ul>
+          <li>試合の記録・チーム管理</li>
+          <li>スコアブックの表示・PDF・印刷</li>
+          <li>成績の集計</li>
+          <li>試合結果・試合マップ（直近 20 試合）</li>
+          <li>疑似観戦（直近 1 試合）</li>
+          <li>選手カードの表示</li>
+        </ul>
+      </div>
+      <div class="box pro">
+        <h3>Premium で増えること</h3>
+        <ul>
+          <li>すべての試合の結果と疑似観戦</li>
+          <li>選手カードへの成績の反映</li>
+          <li>試合写真の登録（1試合 5 枚まで・端末内）</li>
+          <li>思い出アルバムの作成（A4 PDF／プリント用画像）</li>
+        </ul>
+      </div>
+    </div>
+
+    <details open>
+      <summary>野球のルールを知らなくても使えますか？</summary>
+      <p>はい。そのために作ったアプリです。打球が飛んだ場所を押すと、その場所で起こりうる結果だけが出てきます。アウトの数や走者の動き、得点や打点はアプリが計算します。</p>
+    </details>
+    <details>
+      <summary>まちがえて記録したときは？</summary>
+      <p>あとから結果を直せます。得点・打点・自責点も、直した結果にあわせて計算し直されます。</p>
+    </details>
+    <details>
+      <summary>機種変更するときは、記録はどうなりますか？</summary>
+      <p>アプリのバックアップ機能で、記録と写真をまとめて書き出せます。新しい端末で復元すれば、そのまま続けられます。写真は端末の中だけに保存されているので、この手順で移してください。</p>
+    </details>
+    <details>
+      <summary>うまくいかないときは？</summary>
+      <p>お問い合わせ（<a href="mailto:baseball.log.jp@gmail.com">baseball.log.jp@gmail.com</a>）までご連絡ください。よくある質問は<a href="index.html#faq">ホームのよくある質問</a>にもまとめています。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 最後のCTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2><span class="mark">まずは、次の試合から</span></h2>
+    <p>この順番どおりに進めれば、はじめての1試合が記録できます。</p>
+    <a class="btn btn-main" href="https://apps.apple.com/app/baseball-log/id6795148572">App Store で入手</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="index.html">ホーム</a>
+      <a href="guide.html">使い方</a>
+      <a href="https://apps.apple.com/app/baseball-log/id6795148572">App Store</a>
+      <a href="https://shigeoodvm-creator.github.io/baseball-log-legal/">プライバシーポリシー</a>
+      <a href="https://x.com/BaseballLOG_jp">X @BaseballLOG_jp</a>
+      <a href="mailto:baseball.log.jp@gmail.com">お問い合わせ</a>
+    </div>
+    <p style="margin:0;">
+      Baseball LOG — 野球の記録を、思い出に変える。<br />
+      対応：iPhone / iPad（iOS）　お問い合わせ：baseball.log.jp@gmail.com
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
