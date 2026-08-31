@@ -219,15 +219,16 @@
   .phone.mapframe .screen img { height: auto; object-fit: fill; }
   .mapwrap { position: relative; line-height: 0; }
   .pin {
-    position: absolute; width: 4.2%; aspect-ratio: 1; border-radius: 50%;
+    position: absolute; width: 4.6%; aspect-ratio: 1; border-radius: 50%;
     transform: translate(-50%, -50%);
-    border: 1.5px solid rgba(255,255,255,0.95);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.45);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   }
-  .pin.win      { background: #2e7d32; }
-  .pin.loss     { background: #c62828; }
-  .pin.draw     { background: #78909c; }
-  .pin.practice { background: #1565c0; }
+  /* 地図の地色に溶けないよう、彩度の高いネオン系にする（アプリの PIN_COLORS と一致） */
+  .pin.win      { background: #00E676; }
+  .pin.loss     { background: #FF1744; }
+  .pin.draw     { background: #FF9100; }
+  .pin.practice { background: #2979FF; }
 
   /* 端末の枠を付けずに、画像をそのまま見せる（LINE の共有画面など） */
   .shot-plain {
@@ -472,10 +473,10 @@
           住所を打ち込む必要はありません。天気も一緒に残ります。
         </p>
         <div class="legend">
-          <span><i style="background:#2e7d32"></i>勝ち</span>
-          <span><i style="background:#c62828"></i>負け</span>
-          <span><i style="background:#78909c"></i>引き分け</span>
-          <span><i style="background:#1565c0"></i>練習試合</span>
+          <span><i style="background:#00E676"></i>勝ち</span>
+          <span><i style="background:#FF1744"></i>負け</span>
+          <span><i style="background:#FF9100"></i>引き分け</span>
+          <span><i style="background:#2979FF"></i>練習試合</span>
         </div>
         <ul>
           <li>色を見るだけで、勝った日も負けた日も思い出せます</li>
